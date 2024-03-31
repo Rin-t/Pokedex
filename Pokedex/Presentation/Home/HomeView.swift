@@ -6,19 +6,23 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
-struct ContentView: View {
+struct HomeView: View {
+
+    let store: StoreOf<HomeReducer>
+
     var body: some View {
         VStack {
             Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
         }
         .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    let store = Store(initialState: HomeReducer.State()) {
+        HomeReducer()
+    }
+    return HomeView(store: store)
 }

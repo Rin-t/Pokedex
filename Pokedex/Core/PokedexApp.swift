@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct PokedexApp: App {
+
+    static let store = Store(initialState: HomeReducer.State()) {
+        HomeReducer()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(store: Self.store)
         }
     }
 }
