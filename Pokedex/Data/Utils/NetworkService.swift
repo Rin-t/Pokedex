@@ -20,9 +20,9 @@ enum NetworkService {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = try JSONDecoder().decode(Response.self, from: data)
             return decoder
-        } catch let error as DecodingError {
+        } catch _ as DecodingError {
             throw Error.decodeError
-        } catch let error as URLError {
+        } catch _ as URLError {
             throw Error.connectionError
         } catch {
             throw Error.unknown
