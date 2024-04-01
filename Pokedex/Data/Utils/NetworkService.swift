@@ -24,6 +24,8 @@ enum NetworkService {
             throw Error.decodeError
         } catch let error as URLError {
             throw Error.connectionError
+        } catch {
+            throw Error.unknown
         }
     }
 
